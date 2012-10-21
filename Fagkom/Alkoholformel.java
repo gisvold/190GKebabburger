@@ -1,6 +1,5 @@
 package hyttetur;
 
-
 import java.lang.reflect.Array;
 import java.util.Scanner;
 
@@ -13,28 +12,23 @@ public class Alkoholformel {
 	{
 		final Scanner scanner = new Scanner(System.in);
 		
-		System.out.print("Hvor mange dager skal du på hyttetur? Skriv inn som tall");
+		System.out.print("Hvor mange dager skal du pÃ¥ hyttetur? Skriv inn som tall \n");
 		int nrOfDays = scanner.nextInt();
 		
-		System.out.print("Hvor mange alkoholenheter trenger du på en normal kveld?");
+		System.out.print("Hvor mange alkoholenheter trenger du pÃ¥ en normal kveld?");
 		int alcoholAmount = scanner.nextInt();
 	
-		int alcoholYouNeed = alcoholNeeded(nrOfDays, alcoholAmount);
+		int[] alcoholYouNeed;
+		alcoholYouNeed = new int[10];
+		alcoholYouNeed[0] = nrOfDays*alcoholAmount;
 		
-		System.out.println("Du skal på hyttetur i " + nrOfDays + " dager. For det trenger du " + alcoholYouNeed + " enheter alkohol");
+		for(int i = 1; i<alcoholYouNeed.length; i++){
+			alcoholYouNeed[i] = alcoholYouNeed[i-1]*2; 
+		}
+		
+		int alcoholYouShouldBring = alcoholYouNeed[nrOfDays];
+		System.out.println("Du skal pÃ¥ hyttetur i " + nrOfDays + " dager. For det trenger du " + alcoholYouShouldBring + " enheter alkohol");
 	}
 	
-	public static int alcoholNeeded(Integer nrOfDays, Integer alcoholAmount){
-		
-		int alcoholNeeded = 0;
-		int[] recArray = new int[10];
-		
-		recArray[0] = alcoholNeeded*2;
-		recArray[1] = recArray[1]*2;
-		
-		alcoholNeeded = recArray[nrOfDays];
-		
-		return alcoholNeeded;
-	}
 
 }
