@@ -15,8 +15,10 @@ public class MainActivity extends Activity implements OnClickListener{
 	private static final String TAG = MainActivity.class.getSimpleName();	
 	public int nrOfDays = 0;
     public int alcoholAmount = 0;
+    public int alcoholToBring = 0;
     EditText alcoholInput;
     EditText dayInput;
+    EditText alcoholToBringLabel;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,9 @@ public class MainActivity extends Activity implements OnClickListener{
         
         alcoholInput = (EditText)findViewById(R.id.alcohol_amount);
         dayInput = (EditText)findViewById(R.id.nr_of_days);
+        alcoholToBringLabel = (EditText)findViewById(R.id.alcoholtobring);
+        alcoholToBringLabel.setEnabled(false);
+        
     }
 
     @Override
@@ -40,7 +45,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		Log.d(TAG, "pressed button: " + v.getId());
 		if(vid == R.id.calculateButton)
 		{
-			alcoholCalculator(nrOfDays, alcoholAmount);
+			alcoholAmount = Integer.parseInt(alcoholInput.getText().toString());
+			nrOfDays = Integer.parseInt(dayInput.getText().toString());
+			alcoholToBring = alcoholCalculator(nrOfDays, alcoholAmount);
+			alcoholToBringLabel.setText(""+ alcoholToBring);
 		}		
 	}
 	
@@ -68,6 +76,6 @@ public class MainActivity extends Activity implements OnClickListener{
 			return (alcoholAmount*2);
 		}
 		else
-			return alcoholCalculator((nrOfDays-1), alcoholAmount)*2;
+			return alcoholCalculator((nrOfDays-1), alcoholAmount)*2 + alcoholCalculator((nrOfDays-1), alcoholAmount);
 	}
 }
