@@ -1,6 +1,5 @@
 package hyttetur;
 
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 
@@ -24,7 +23,7 @@ public class Alkoholformel {
 			return (alcoholAmount*2);
 		}
 		else
-			return alcoholCalculator((nrOfDays-1), alcoholAmount)*2;
+			return alcoholCalculator((nrOfDays-1), alcoholAmount)*2 + alcoholCalculator((nrOfDays-1), alcoholAmount);
 		
 
 	}
@@ -41,7 +40,9 @@ public class Alkoholformel {
 	
 		alcoholYouShouldBring = alcoholCalculator(nrOfDays, alcoholAmount);
 		
+		System.out.println("Takk for at du bruker Aleks' Alkoholformel for hyttetur");
 		System.out.println("Du skal på hyttetur i " + nrOfDays + " dager. For det trenger du " + alcoholYouShouldBring + " enheter alkohol");
+		System.out.println("Vi minner om at inntak av alkohol skjer på eget ansvar, og vi fraskriver oss alt ansvar");
 	}
 	
 	
