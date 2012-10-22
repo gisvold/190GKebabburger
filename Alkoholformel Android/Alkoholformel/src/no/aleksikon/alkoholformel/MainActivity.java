@@ -2,6 +2,7 @@ package no.aleksikon.alkoholformel;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 public class MainActivity extends Activity implements OnClickListener{
 
 	private Button calculateButton;
+	private Button disclaimerButton;
 	private static final String TAG = MainActivity.class.getSimpleName();	
 	public int nrOfDays = 0;
     public int alcoholAmount = 0;
@@ -45,11 +47,16 @@ public class MainActivity extends Activity implements OnClickListener{
 		Log.d(TAG, "pressed button: " + v.getId());
 		if(vid == R.id.calculateButton)
 		{
+			
 			alcoholAmount = Integer.parseInt(alcoholInput.getText().toString());
 			nrOfDays = Integer.parseInt(dayInput.getText().toString());
 			alcoholToBring = alcoholCalculator(nrOfDays, alcoholAmount);
 			alcoholToBringLabel.setText(""+ alcoholToBring);
 		}		
+		else if (vid == R.id.disclaimerButton)
+		{
+			activityStarter(DisclaimerActivity.class);
+		}
 	}
 	
 	private void setUpListenerForButton(Button b, int id)
@@ -62,6 +69,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	private void setUpListeners()
 	{
 		setUpListenerForButton(calculateButton, R.id.calculateButton);
+		setUpListenerForButton(disclaimerButton, R.id.disclaimerButton);
 	}
 	
 	
@@ -77,5 +85,11 @@ public class MainActivity extends Activity implements OnClickListener{
 		}
 		else
 			return alcoholCalculator((nrOfDays-1), alcoholAmount)*2 + alcoholCalculator((nrOfDays-1), alcoholAmount);
+	}
+	
+	private void activityStarter(Class<?> c){
+		Log.d(c.getSimpleName(), "activityStarter");
+		Intent intent = new Intent(MainActivity.this,c);
+		startActivity(intent);
 	}
 }

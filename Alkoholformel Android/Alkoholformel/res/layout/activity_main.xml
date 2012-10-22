@@ -79,4 +79,12 @@
         android:text="Er antall enheter du trenger totalt for hytteturen"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/disclaimerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="Disclaimer" />
+
 </RelativeLayout>
