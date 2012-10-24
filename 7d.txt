@@ -1,0 +1,16 @@
+function pos = findsub (neddle , heystack )
+
+	n = size ( neddle , 2);
+ 	N = size ( heystack , 2);
+
+	pos = -1;
+
+	for i = 1:N-n+1
+ 	substring = heystack (i:i+n -1);
+ 	if equal ( substring , neddle )
+ 	pos = i;
+ 	return ;
+ 	end
+ end
+
+end
