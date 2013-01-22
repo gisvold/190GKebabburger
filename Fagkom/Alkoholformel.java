@@ -23,7 +23,7 @@ public class Alkoholformel {
 			return (alcoholAmount*2);
 		}
 		else
-			return alcoholCalculator((nrOfDays-1), alcoholAmount)*2 + alcoholCalculator((nrOfDays-1), alcoholAmount);
+			return alcoholCalculator((nrOfDays-1), alcoholAmount)*2;
 		
 
 	}
