@@ -1,7 +1,0 @@
-package no.aleksikon.bedpres_bingo;
-
-public enum BingoOrd {
-	
-	KVINNEANDEL, SOSIALT, INTERNKURSING, INTERNASJONALT, UNGT_MILJØ, INTERNSHIP, SOMMERJOBB, ABAKUS, DATATEKNIKK, INDØK, JAVA, DOTNET;
-
-}
